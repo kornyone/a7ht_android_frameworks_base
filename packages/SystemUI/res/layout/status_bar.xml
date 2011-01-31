@@ -27,6 +27,16 @@
     android:descendantFocusability="afterDescendants"
     >
 
+    <LinearLayout android:id="@+id/status_buttons"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal">
+    <ImageButton android:id="@+id/status_home"
+            android:layout_width="25dip"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_statusbar_home"/>
+    </LinearLayout>
+
     <LinearLayout android:id="@+id/icons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,9 +55,18 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:paddingRight="6dip"
+            android:paddingRight="0dip"
             android:gravity="center_vertical"
             android:orientation="horizontal"/>    
+
+        <ImageButton android:id="@+id/status_back"
+            android:layout_width="25dip"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_statusbar_back"/>
+        <ImageButton android:id="@+id/status_menu"
+            android:layout_width="25dip"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_statusbar_menu"/>
 
         <com.android.systemui.statusbar.Clock
             android:textAppearance="@*android:style/TextAppearance.StatusBar.Icon"
@@ -62,7 +81,7 @@
     <LinearLayout android:id="@+id/ticker"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="6dip"
+        android:paddingLeft="25dip"
         android:animationCache="false"
         android:orientation="horizontal" >
         <ImageSwitcher android:id="@+id/tickerIcon"

@@ -64,12 +64,14 @@ import android.view.WindowManager;
 import android.view.WindowManagerImpl;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.view.IWindowManager;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -259,7 +261,7 @@ public class StatusBarService extends Service implements CommandQueue.Callbacks 
     // ================================================================================
     // Constructing the view
     // ================================================================================
-    private void makeStatusBarView(Context context) {
+    private void makeStatusBarView(final Context context) {
         Resources res = context.getResources();
 
         mIconSize = res.getDimensionPixelSize(com.android.internal.R.dimen.status_bar_icon_size);

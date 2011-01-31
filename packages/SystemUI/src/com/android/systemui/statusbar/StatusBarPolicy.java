@@ -117,7 +117,7 @@ public class StatusBarPolicy {
 
     // phone
     private TelephonyManager mPhone;
-    private int mPhoneSignalIconId;
+    //private int mPhoneSignalIconId;
 
     //***** Signal strength icons
     //GSM/UMTS
@@ -425,7 +425,7 @@ public class StatusBarPolicy {
 
         // phone_signal
         mPhone = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-        mPhoneSignalIconId = R.drawable.stat_sys_signal_null;
+        /* mPhoneSignalIconId = R.drawable.stat_sys_signal_null;
         mService.setIcon("phone_signal", mPhoneSignalIconId, 0);
 
         // register for phone state notifications.
@@ -436,6 +436,13 @@ public class StatusBarPolicy {
                         | PhoneStateListener.LISTEN_CALL_STATE
                         | PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
                         | PhoneStateListener.LISTEN_DATA_ACTIVITY);
+	*/
+
+         ((TelephonyManager)mContext.getSystemService(Context.TELEPHONY_SERVICE))
+	  .listen(mPhoneStateListener,
+	    PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
+	    | PhoneStateListener.LISTEN_DATA_ACTIVITY);
+
 
         // data_connection
         mService.setIcon("data_connection", R.drawable.stat_sys_data_connected_g, 0);
@@ -579,16 +586,19 @@ public class StatusBarPolicy {
     private void onBatteryLow(Intent intent) {
         if (SHOW_LOW_BATTERY_WARNING) {
             if (false) {
-                Slog.d(TAG, "mPhoneState=" + mPhoneState
+                //Slog.d(TAG, "mPhoneState=" + mPhoneState
+		Slog.d(TAG, ""
                       + " mLowBatteryDialog=" + mLowBatteryDialog
                       + " mBatteryShowLowOnEndCall=" + mBatteryShowLowOnEndCall);
             }
 
+	    /*
             if (SHOW_BATTERY_WARNINGS_IN_CALL || mPhoneState == TelephonyManager.CALL_STATE_IDLE) {
                 showLowBatteryWarning();
             } else {
                 mBatteryShowLowOnEndCall = true;
             }
+	    */
         }
     }
 
@@ -677,7 +687,7 @@ public class StatusBarPolicy {
     }
 
     private final void updateCallState(int state) {
-        mPhoneState = state;
+        /* mPhoneState = state;
         if (false) {
             Slog.d(TAG, "mPhoneState=" + mPhoneState
                     + " mLowBatteryDialog=" + mLowBatteryDialog
@@ -695,7 +705,7 @@ public class StatusBarPolicy {
                 mLowBatteryDialog.dismiss();
                 mBatteryShowLowOnEndCall = true;
             }
-        }
+        }*/
     }
 
     private DialogInterface.OnDismissListener mLowBatteryListener
@@ -853,7 +863,7 @@ public class StatusBarPolicy {
     }
 
     private final void updateSignalStrength() {
-        int iconLevel = -1;
+        /* int iconLevel = -1;
         int[] iconList;
 
         // Display signal strength while in "emergency calls only" mode
@@ -904,12 +914,12 @@ public class StatusBarPolicy {
             }
         }
         mPhoneSignalIconId = iconList[iconLevel];
-        mService.setIcon("phone_signal", mPhoneSignalIconId, 0);
+        mService.setIcon("phone_signal", mPhoneSignalIconId, 0); */
     }
 
     private int getCdmaLevel() {
-        final int cdmaDbm = mSignalStrength.getCdmaDbm();
-        final int cdmaEcio = mSignalStrength.getCdmaEcio();
+	return 0;
+        /* final int cdmaEcio = mSignalStrength.getCdmaEcio();
         int levelDbm = 0;
         int levelEcio = 0;
 
@@ -926,7 +936,7 @@ public class StatusBarPolicy {
         else if (cdmaEcio >= -150) levelEcio = 1;
         else levelEcio = 0;
 
-        return (levelDbm < levelEcio) ? levelDbm : levelEcio;
+        return (levelDbm < levelEcio) ? levelDbm : levelEcio; */
     }
 
     private int getEvdoLevel() {
@@ -1040,12 +1050,12 @@ public class StatusBarPolicy {
         }
 
         long ident = Binder.clearCallingIdentity();
-        try {
+        /* try {
             mBatteryStats.notePhoneDataConnectionState(mPhone.getNetworkType(), visible);
         } catch (RemoteException e) {
         } finally {
             Binder.restoreCallingIdentity(ident);
-        }
+        }*/
 
         if (mDataIconVisible != visible) {
             mService.setIconVisibility("data_connection", visible);
@@ -1179,7 +1189,7 @@ public class StatusBarPolicy {
     }
 
     private final void updateCdmaRoamingIcon(ServiceState state) {
-        if (!hasService()) {
+        /* if (!hasService()) {
             mService.setIconVisibility("cdma_eri", false);
             return;
         }
@@ -1221,7 +1231,7 @@ public class StatusBarPolicy {
 
         }
         mService.setIcon("phone_signal", mPhoneSignalIconId, 0);
-    }
+    } */
 
 
     private class StatusBarHandler extends Handler {

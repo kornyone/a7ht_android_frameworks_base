@@ -55,6 +55,7 @@
                 android:paddingLeft="4dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#ffdfdfdf"
+		android:visibility="gone"
                 />
             <TextView android:id="@+id/clear_all_button"
                 android:layout_width="wrap_content"
