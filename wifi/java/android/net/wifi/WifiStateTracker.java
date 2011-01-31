@@ -70,7 +70,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class WifiStateTracker extends NetworkStateTracker {
 
-    private static final boolean LOCAL_LOGD = Config.LOGD || false;
+    private static final boolean LOCAL_LOGD = Config.LOGD || true;
     
     private static final String TAG = "WifiStateTracker";
 
@@ -393,7 +393,7 @@ public class WifiStateTracker extends NetworkStateTracker {
 
         mSettingsObserver = new SettingsObserver(new Handler());
 
-        mInterfaceName = SystemProperties.get("wifi.interface", "tiwlan0");
+        mInterfaceName = SystemProperties.get("wifi.interface", "wlan0");
         sDnsPropNames = new String[] {
             "dhcp." + mInterfaceName + ".dns1",
             "dhcp." + mInterfaceName + ".dns2"
