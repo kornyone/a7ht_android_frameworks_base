@@ -1230,8 +1230,8 @@ public class StatusBarPolicy {
                 break;
 
         }
-        mService.setIcon("phone_signal", mPhoneSignalIconId, 0);
-    } */
+        mService.setIcon("phone_signal", mPhoneSignalIconId, 0);*/
+    } 
 
 
     private class StatusBarHandler extends Handler {
