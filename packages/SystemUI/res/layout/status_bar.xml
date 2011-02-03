@@ -32,7 +32,7 @@
                   android:layout_height="match_parent"
                   android:orientation="horizontal">
     <ImageButton android:id="@+id/status_home"
-            android:layout_width="25dip"
+            android:layout_width="40dip"
             android:layout_height="match_parent"
             android:background="@drawable/ic_statusbar_home"/>
     </LinearLayout>
@@ -60,11 +60,11 @@
             android:orientation="horizontal"/>    
 
         <ImageButton android:id="@+id/status_back"
-            android:layout_width="25dip"
+            android:layout_width="40dip"
             android:layout_height="match_parent"
             android:background="@drawable/ic_statusbar_back"/>
         <ImageButton android:id="@+id/status_menu"
-            android:layout_width="25dip"
+            android:layout_width="40dip"
             android:layout_height="match_parent"
             android:background="@drawable/ic_statusbar_menu"/>
 
